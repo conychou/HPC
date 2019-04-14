@@ -1,0 +1,37 @@
+ENVIRONMENT:    lspci | grep ' VGA ' 
+
+cuda1
+04:00.0 VGA compatible controller: NVIDIA Corporation GK110B [GeForce GTX TITAN Black] (rev a1)
+0a:00.0 VGA compatible controller: Matrox Electronics Systems Ltd. G200eR2 (rev 01)
+82:00.0 VGA compatible controller: NVIDIA Corporation GK110B [GeForce GTX TITAN Black] (rev a1)
+https://www.geforce.com/hardware/desktop-gpus/geforce-gtx-titan-black/specifications
+
+cuda2
+09:00.0 VGA compatible controller: Matrox Electronics Systems Ltd. G200eR2 (rev 01)
+83:00.0 VGA compatible controller: NVIDIA Corporation TU102 [GeForce RTX 2080 Ti Rev. A] (rev a1)
+84:00.0 VGA compatible controller: NVIDIA Corporation TU102 [GeForce RTX 2080 Ti Rev. A] (rev a1)
+https://www.nvidia.com/en-in/geforce/graphics-cards/rtx-2080-ti/
+
+RESULT: 
+
+1.Matrix-vector operations on a GPU. (2048 * 2048 matrix, BLOCK_SIZE 32)
+cuda1
+==============================
+CPU Bandwidth = 0.007826 GB/s
+GPU Bandwidth = 0.183925 GB/s
+sumError = 0.000000
+
+cuda2
+==============================
+CPU Bandwidth = 0.003540 GB/s
+GPU Bandwidth = 0.635377 GB/s
+sumError = 0.000000
+
+2. 2D Jacobi method on a GPU. (2048 * 2048 matrix, BLOCK_SIZE 32, MAX_ITER 64)
+cuda1
+==============================
+GPU Bandwidth = 0.411448 GB/s
+
+cuda2
+==============================
+GPU Bandwidth = 0.200041 GB/s
