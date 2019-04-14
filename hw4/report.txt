@@ -35,3 +35,10 @@ GPU Bandwidth = 0.411448 GB/s
 cuda2
 ==============================
 GPU Bandwidth = 0.200041 GB/s
+
+3.Final Project
+In our final project, we'd like to implement the application "Painterly Rendering with Curved Strokes of Multiple Size" in Parallel using OpenMP and GPU, and this is the link to the paper: https://www.mrl.nyu.edu/publications/painterly98/hertzmann-siggraph98.pdf
+
+We plan to use GPU to accelerate the blurring, edge detection, difference, and averaging operations. Then, use OpenMp to generate the strok that calculate the gradient at the largest error point to get the direction stroke.
+We found that there is one implementation in CUDA on GitHub, so at the end, we will try to compare our result with the CUDA version.
+
