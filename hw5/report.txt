@@ -1,0 +1,48 @@
+env: crunchy5
+
+1. MPI ring communication.
+pass int in ring
+==================
+compile: mpicc -std=c99 -o int_ring int_ring.c -lm
+         mpicc -std=c99 -o buffer_ring buffer_ring.c -lm
+run: mpirun -n (num_process) ./int_ring (iteration)
+     mpirun -n (num_process) ./buffer_ring (iteration)
+
+bandwidth(GB/s) = num_process * N * size(B) / 1e9 / time
+
+num_process   size(B)  iteration(N)    time(sec)    bandwidth(GB/s)
+2               4       1000            0.001198        0.006 
+2               2M      1000            1.744831        2.29
+10              4       1000            0.179490        0.0002
+10              2M      1000            10.632040       1.88
+20              2M      1000            30.173824       1.33
+
+When data size increase, the bandwidth increase as well.
+Therefore, it's more efficient to communicate with large data chunk.
+And when there are more processes, the bandwidth will decrease and the ideal bandwith is around 2.3 GB/s.
+
+2. Details regarding final project
+
++--------------------------------------------------------------------------------------------------------------------------------+
+| Project: Parallelize Painterly Rendering with Curved Brush Strokes of Multiple Sizes                                           |
++--------------------------------------------------------------------------------------------------------------------------------+
+| Week      | Work                                                                                   | Who           | Checklist |
++-----------+----------------------------------------------------------------------------------------+---------------+-----------+
+| 4/15-4/18 | Read paper and think about the algorithm                                               | Emily, Connie |     V     |
++-----------+----------------------------------------------------------------------------------------+---------------+-----------+
+| 4/19-4/21 | Implement Sobel operator, paint and stroke algorithm in C++ and OpenCV(serial version) | Emily         |     V     |
++-----------+----------------------------------------------------------------------------------------+---------------+-----------+
+| 4/19-4/21 | Implement Gaussian Filter and parallelize with OpenMP and C++                          | Connie        |     V     |
++-----------+----------------------------------------------------------------------------------------+---------------+-----------+
+| 4/24-4/28 | Study how to paint the result on canvas and implement it in OpenCV                     | Emily         |           |
++-----------+----------------------------------------------------------------------------------------+---------------+-----------+
+| 4/24-4/28 | Parallelize Sobel operator and stroke part from serial version with OpenMP             | Connie        |           |
++-----------+----------------------------------------------------------------------------------------+---------------+-----------+
+| 4/27-4/28 | If complete before time, try to implement with CUDA and compare the performance.       | Emily,Connie  |           |
++-----------+----------------------------------------------------------------------------------------+---------------+-----------+
+| 4/28-5/1  | Final Optimization. Run tests and check results                                        | Emily,Connie  |           |
++-----------+----------------------------------------------------------------------------------------+---------------+-----------+
+| 5/1-5/6   | Work on presentation slides and report                                                 | Emily,Connie  |           |
++-----------+----------------------------------------------------------------------------------------+---------------+-----------+
+
+
