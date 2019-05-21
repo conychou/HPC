@@ -1,0 +1,15 @@
+1.
+Finish these parts 
+part1. Determine for each process, which points (and thus unknowns) must be updated by which MPI tasks. 
+part2. Determine which points must be communicated (i.e., the ghost nodes), and between which processors this communication must take place.
+
+But face some problem at part3 with blocking sends and receives by allocating (Nl + 2)2 unknowns for each MPI task
+The transimission of North<->South works, but the value of East<->West is incorrect and still work on it. 
+
+2.
+N=10000, process = 64, 0.616632 sec
+N=100000, process = 64, 1.219925 sec
+N=1000000, process = 64, 3.136984 sec
+
+We can see that when the data size 10 times larger, the execution time only get double.
+We can say that the program has good parallelize performance.
